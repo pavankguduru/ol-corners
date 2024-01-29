@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Corners for OpenLayers</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v8.2.0/ol.css" />
+    <link rel="stylesheet" href="../ol-corners.css" />
+    <style>
+        html,
+        body,
+        .map-container,
+        .map {
+            height: 100%;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map-container" class="map-container">
+        <!-- Required HTML for controls target -->
+        <div id="ol-corners" class="ol-corners">
+            <div id="top-right" class="top-right"></div>
+            <div id="top-left" class="top-left"></div>
+            <div id="top-center" class="top-center"></div>
+            <div id="bottom-right" class="bottom-right"></div>
+            <div id="bottom-left" class="bottom-left"></div>
+            <div id="bottom-center" class="bottom-center"></div>
+        </div>
+        <!-- Map target-->
+        <div id="map" class="map"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/ol@v8.2.0/dist/ol.js"></script>
+    <script>
+        const map = new ol.Map({
+            target: "map",
+            view: new ol.View({
+                center: [0, 0],
+                zoom: 2,
+                project: "EPSG:4326",
+            }),
+            layers: [
+                new ol.layer.Tile({
+                    source: new ol.source.OSM(),
+                }),
+            ],
+            controls: [
+                new ol.control.Zoom({
+                    target: "top-left",
+                }),
+                new ol.control.ZoomSlider({
+                    target: "top-left",
+                }),
+                new ol.control.FullScreen({
+                    target: "top-right",
+                }),
+                new ol.control.Rotate({
+                    target: "top-left",
+                    autoHide: false
+                }),
+                new ol.control.Attribution({
+                    target: "bottom-right",
+                    collapsed: true,
+                    collapsible: true,
+                }),
+                new ol.control.ZoomToExtent({
+                    target: "top-right"
+                }),
+                new ol.control.OverviewMap({
+                    target: "bottom-left",
+                    collapsed: false,
+                    layers: [new ol.layer.Tile({
+                        source: new ol.source.OSM()
+                    })]
+                }),
+                new ol.control.ScaleLine({
+                    target: "bottom-left"
+                }),
+                new ol.control.MousePosition({
+                    target: "bottom-center"
+                })
+            ]
+        });
+    </script>
+</body>
+
+</html>

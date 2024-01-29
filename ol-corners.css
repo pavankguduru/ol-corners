@@ -1,0 +1,90 @@
+.ol-corners {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+  }
+  
+  .ol-corners>div {
+    position: absolute;
+    display: flex;
+    pointer-events: visible;
+  }
+  
+  .ol-corners>div>* {
+    position: relative;
+    top: unset;
+    bottom: unset;
+    left: unset;
+    right: unset;
+    justify-items: center;
+    text-align: center;
+    vertical-align: middle;
+  }
+  
+  .ol-corners>div[class*="left"],
+  .ol-corners>div[class*="right"] {
+    max-height: 50vh;
+    width: auto;
+    z-index: 999;
+  }
+  
+  .ol-corners>div[class*="left"]>*,
+  .ol-corners>div[class*="right"]>* {
+    margin: 0.25rem 0.25rem;
+  }
+  
+  .ol-corners>div[class*="top"] {
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    top: 0;
+    bottom: unset;
+  }
+  
+  .ol-corners>div[class*="bottom"] {
+    flex-direction: column-reverse;
+    flex-wrap: wrap;
+    justify-content: center;
+    bottom: 0;
+    top: unset;
+  }
+  
+  .ol-corners>div[class*="left"] {
+    justify-content: flex-start;
+    left: 0;
+    right: unset;
+  }
+  
+  .ol-corners>div[class*="right"] {
+    justify-content: flex-end;
+    right: 0;
+    left: unset;
+  }
+  
+  .ol-corners>div[class*="center"] {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    max-height: 10%;
+    width: 100%;
+    z-index: 998;
+  }
+  
+  .ol-corners>div[class*="center"]>* {
+    justify-items: center;
+    text-align: center;
+    vertical-align: middle;
+    margin: 0.25rem;
+  }
+  
+  .top-left>*,
+  .bottom-left>* {
+    margin-right: auto !important;
+  }
+  
+  .top-right>*,
+  .bottom-right>* {
+    margin-left: auto !important;
+  }
